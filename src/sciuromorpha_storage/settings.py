@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     service_mode: str = Field(
         S.ENV_MODE_DEVELOPMENT, validation_alias=AliasChoices(S.ENV_CONFIG_MODE)
     )
-    storage_config: str = Field(
+    storage_config_file: list | str = Field(
         "./storage_conf.ini",
         validation_alias=AliasChoices(
             S.ENV_CONFIG_FILE, "storage_config", "storage_conf", "storage_config_file"

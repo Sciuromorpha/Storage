@@ -41,22 +41,22 @@ class Settings(BaseSettings):
 
 
 class StorageConfig:
-    config_files = ["./storage_conf.ini"]
     config = configparser.ConfigParser(allow_no_value=True, strict=True)
+    config_files = []
 
-    def __init__(self, config_files: Union[list, str]) -> None:
+    def __init__(self, config_file: Union[list[str], str]) -> None:
         # Read Default Values
         self.config.read_dict(
             {
-                "storage": {
+                S.CONFIG_SECTION_STORAGE: {
                     "scope": ["host", "docker"],
                     "backend": ["fs", "cache"],
                 },
-                "fs": {"root": "./storage"},
-                "cache": {"root": "./cache"},
-                "docker": {"socket": "/var/run/docker.sock"},
+                S.CONFIG_SECTION_FS: {"root": "./storage"},
+                S.CONFIG_SECTION_CACHE: {"root": "./cache"},
+                S.CONFIG_SECTION_DOCKER: {"socket": "/var/run/docker.sock"},
             }
         )
 
         # Read init config file
-        self.config.read(config_files)
+        self.config_files = self.config.read(config_file)

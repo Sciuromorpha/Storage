@@ -1,3 +1,4 @@
+# Service status
 SERVICE_STATUS_ONLINE = "online"
 SERVICE_STATUS_OFFLINE = "offline"
 
@@ -11,3 +12,9 @@ ENV_CONFIG_FILE = ENV_CONFIG_PREFIX + "CONFIG"
 ENV_MODE_DEVELOPMENT = "development"
 ENV_MODE_PRODUCTION = "production"
 ENV_MODE_TEST = "test"
+
+# Config Section
+CONFIG_SECTION_STORAGE = "storage"
+CONFIG_SECTION_FS = "fs"
+CONFIG_SECTION_CACHE = "cache"
+CONFIG_SECTION_DOCKER = "docker"

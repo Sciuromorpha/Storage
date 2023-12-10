@@ -7,7 +7,9 @@ readme = "README.md"
 packages = [{include = "sciuromorpha_storage", from = "src"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.11"
+faststream = {extras = ["rabbit", "redis"], version = "^0.3.2"}
+pydantic-settings = "^2.1.0"
 
 
 [build-system]

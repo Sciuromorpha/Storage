@@ -1,0 +1,2 @@
+SERVICE_STATUS_ONLINE = "online"
+SERVICE_STATUS_OFFLINE = "offline"

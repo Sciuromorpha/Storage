@@ -8,7 +8,8 @@ from faststream.rabbit.annotations import (
     RabbitBroker as BrokerAnnotation,
 )
 
-from sciuromorpha_storage import S, Settings
+from sciuromorpha_storage import S
+from sciuromorpha_storage.settings import Settings, StorageConfig
 from sciuromorpha_storage.mq_schema import service_status
 
 broker = RabbitBroker()
@@ -22,6 +23,11 @@ async def setup(context: ContextRepo, logger: Logger, env: str = ".env"):
 
     settings = Settings(_env_file=os.environ.get(S.ENV_DOT_FILE, env))
     context.set_global("settings", settings)
+
+    storage_config = StorageConfig(settings.storage_config_file)
+    context.set_global("storage_config", storage_config)
+
+    from sciuromorpha_storage.rpc import startup
 
     await broker.connect(str(settings.mq))
     logger.debug("connect to mq success")
